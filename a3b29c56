@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    string s;
+    cin >> s;
+
+    vector<pair<char,int>> v;
+
+    for (char ch : s) {
+        if (isalpha(ch)) {
+            v.push_back({ch, 0});
+        } else if (isdigit(ch)) {
+            int pi = v.size() - 1;
+            v[pi].second = v[pi].second * 10 + (ch - '0');
+        }
+    }
+
+    for (auto [ch, rpt] : v) {
+        if (rpt == 0) rpt = 1;  
+        while (rpt--) cout << ch;
+    }
+    cout << "\n";
+}
+
+int main() {
+    solve();
+    return 0;
+}
